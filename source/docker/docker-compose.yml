@@ -1,0 +1,14 @@
+php_service:
+  build: ./service/
+  ports:
+   - "8080:80"
+  volumes:
+   - ../:/var/www/html
+  links:
+   - mysql_db
+mysql_db:
+  build: ./db/
+  volumes:
+      - ./db/datadir:/var/lib/mysql
+  ports:
+      - "3306:3306"
